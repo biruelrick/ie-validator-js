@@ -6,9 +6,6 @@ Registration state validator for Brazilian companies (aka Inscrição Estadual)
 
 ```bash
 sudo npm i -g mocha
-```
-
-```bash
 npm i
 ```
 
@@ -19,7 +16,7 @@ npm start
 ```
 
 # Mocha test
-## Valid the I.E. by state
+## Validate the I.E. by state
 
 ```bash
 mocha -g '<uf>'
