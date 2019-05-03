@@ -38,4 +38,14 @@ mocha -g '<uf>'
 
 # Example
 ## Validate the I.E. for Acre (ac) state
+ * technical specification: [http://www.sintegra.gov.br/Cad_Estados/cad_AC.html](http://www.sintegra.gov.br/Cad_Estados/cad_AC.html)
+ * valid I.E. for this state: '01.004.823/001-12' (specified in the `./src/ac.spec.js` file)
+ * function file `./src/ac.js`
+ * spec file `./src/ac.spec.js`
 
+To run this test
+```bash
+mocha -g 'ac'
+```
+
+_P.S. The folder `./util` has a `helper.js` file with common functions to be shared to files function_
