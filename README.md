@@ -4,7 +4,7 @@ Registration state validator for Brazilian companies (aka Inscrição Estadual)
 
 ## What's it?
 Many Brazilian companies require a registration in their state known as the 'State Registration' or in brazilian language 'Inscrição Estadual' with acronym 'I.E.', popularly called of 'Sintegra' (organ responsible for registration). This registry is composed of a combination of numbers under a mathematical calculation by each state.
-The rules for these calculations can be found at: `http://www.sintegra.gov.br/insc_est.html`.
+The rules for these calculations can be found at: [http://www.sintegra.gov.br/insc_est.html](http://www.sintegra.gov.br/insc_est.html).
 
 _P.S.: Each state has its own rule, in some cases the same rule applies to more than one state_
 
@@ -16,13 +16,14 @@ This project will be applied as a test for new programmer candidates, each candi
 Anyway, this library will be used in a real product.
 
 ## Install
+To run the code you need the NodeJS (v10 or major) installed and mocha package as global package.
 
 ```bash
 sudo npm i -g mocha
 npm i
 ```
 
-## Test if the environment is working
+## Test if the dev tools environment is working
 
 ```bash
 npm start
@@ -34,3 +35,7 @@ npm start
 ```bash
 mocha -g '<uf>'
 ```
+
+# Example
+## Validate the I.E. for Acre (ac) state
+
