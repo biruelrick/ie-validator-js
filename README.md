@@ -19,9 +19,6 @@ Anyway, this library will be used in a real product.
 
 ```bash
 sudo npm i -g mocha
-```
-
-```bash
 npm i
 ```
 
@@ -32,7 +29,7 @@ npm start
 ```
 
 # Mocha test
-## Valid the I.E. by state
+## Validate the I.E. by state
 
 ```bash
 mocha -g '<uf>'
