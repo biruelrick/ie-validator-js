@@ -1,0 +1,31 @@
+{
+  "name": "ie_validator",
+  "version": "0.0.1",
+  "description": "State registration (ie. Inscrição Estadual)  validator for Brazilian companies",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/biruelrick/ie_validator.git"
+  },
+  "keywords": [
+    "ie",
+    "inscrição",
+    "estadual",
+    "state",
+    "registration"
+  ],
+  "author": "Ricardo Biruel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biruelrick/ie_validator/issues"
+  },
+  "homepage": "https://github.com/biruelrick/ie_validator#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
