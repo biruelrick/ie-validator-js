@@ -54,14 +54,16 @@ function weightCalculator(ie) {
   } 
   if (digito == 0)
   {
-    if ((((base % 11))%10 != 1) || (( (base % 11)) != 0)){
-      return false;
+    if (11-(base%11) == 11 || (base % 11) == 10 || 11-(base%11) == digito){
+      block.push(digito);
+      let i = block.join().replace(/,/g, '');
+      return h.mask(i, '#########');
     }
   }
   if(11-(base%11) != digito) return false;
   block.push(digito);
   let i = block.join().replace(/,/g, '');
-  return h.mask(i, '###.###.###');
+  return h.mask(i, '#########');
 }
 
 module.exports = validate;

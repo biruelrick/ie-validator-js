@@ -1,0 +1,26 @@
+Acre - OK
+Alagoas - OK
+Amapá - OK
+Amazonas - OK
+Bahia
+Ceará - OK
+Distrito Federal
+Espírito Santo
+Goiás - OK
+Maranhão - OK
+Mato Grosso
+Mato Grosso do Sul
+Minas Gerais
+Pará - OK
+Paraíba - OK
+Pernambuco - OK
+Piauí - OK
+Rio de Janeiro - OK
+Rio Grande do Norte
+Rio Grande do Sul
+Rondônia
+Roraima
+Santa Catarina - OK
+São Paulo - OK
+Sergipe	
+Tocantins
