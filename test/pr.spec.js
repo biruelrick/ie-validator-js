@@ -13,7 +13,7 @@ let pr = require('../src/pr');
  * pass if the function './src/pr.js' is correct as technical specification.
  * It will fail if the functions is wrong or the ie number is incompatible with state
  */
-let ie = '123.45678-50';
+let ie = '90167753-01';
 
 describe(`Checking the I.E. number '${ie}'...`, () => {
     it('pr', () => {

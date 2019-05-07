@@ -50,22 +50,27 @@ function weightCalculator(ie, firstDigit) {
 
     if (block.length !== weights.length) return false;
     for (let i = 0; i < block.length; i++) {
-        base += weights[i] * block[i];
+        base += block[i] * weights[i];
     }
 
     let div = base / 11; //12.54
     let maior = Math.floor(div); //12
     let resto = base % 11; //6
+    let dig = undefined;
 
-    let dig = 11 - resto;
-    if (dig == 10) dig = 0;
+    if (resto <= 1) {
+        dig = 0;
+    } else {
+        dig = 11 - resto;
+    }
 
-    if (!firstDigit) return weightCalculator(ie, dig);
+    if (typeof firstDigit === 'undefined') return weightCalculator(ie, dig);
 
     block.push((dig).toString());
 
     let i = block.join().replace(/,/g, '');
-    return h.mask(i, '###.#####-##');
+    return h.mask(i, '########-##');
 }
+
 
 module.exports = validate;
