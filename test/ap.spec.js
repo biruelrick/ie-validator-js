@@ -1,23 +1,23 @@
 /*******************************************************************************
- * CE - IE validator specification test file for Ceará state
+ * AP - IE validator specification test file for UF state
  * *****************************************************************************
- * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_CE.html
- * example: '06000001-5'
+ * technical specification: ??
+ * example: '??'
  ******************************************************************************/
 
 let assert = require('assert');
-let ce = require('../src/ce');
+let ap = require('../src/ap');
 
 /**
  * the ie variable representing a valid I.E. for this state function and will be
- * pass if the function './src/ac.js' is correct as technical specification.
+ * pass if the function './src/uf.js' is correct as technical specification.
  * It will fail if the functions is wrong or the ie number is incompatible with state
  */
-let ie = '03439073-1';
+let ie = '030123459';
 
 describe(`Checking the I.E. number '${ie}'...`, () => {
-  it('ce', () => {
-    assert.equal(ce(ie), ie,
-        `Sorry... the I.E. number '${ie}' for the 'CE' state is not valid! :(`);
+  it('ap', () => {
+    assert.equal(ap(ie), ie,
+        `Sorry... the I.E. number '${ie}' for the 'AP' state is not valid! :(`);
   });
 });

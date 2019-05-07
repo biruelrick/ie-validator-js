@@ -48,8 +48,13 @@ function weightCalculator(ie) {
   for (let i = 0; i < block.length; i++){
     base += weights[i] * block[i];
   } 
-  if ((base % 11) !== 6){
-    return false;
+ 
+  let resultado =11 - (base % 11)
+  
+
+
+  if (resultado != digito){
+    if (!((resultado == 11 || resultado == 10)&& digito == 0)) return false;
   }
 
   block.push(digito);
