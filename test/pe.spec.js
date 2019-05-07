@@ -1,8 +1,8 @@
 /*******************************************************************************
- * AC - IE validator specification test file for Acre state
+ * PE - IE validator specification test file for Pernambuco state
  * *****************************************************************************
- * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_AC.html
- * example: '01.004.823/001-12'
+ * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_PE.html
+ * example: '0321418-40'
  ******************************************************************************/
 
 let assert = require('assert');
@@ -13,11 +13,11 @@ let pe = require('../src/pe');
  * pass if the function './src/ac.js' is correct as technical specification.
  * It will fail if the functions is wrong or the ie number is incompatible with state
  */
-let ie = '624898-25';
+let ie = '0321418-40';
 
 describe(`Checking the I.E. number '${ie}'...`, () => {
     it('pe', () => {
         assert.equal(pe(ie), ie,
-            `Sorry... the I.E. number '${ie}' for the 'AC' state is not valid! :(`);
+            `Sorry... the I.E. number '${ie}' for the 'PE' state is not valid! :(`);
     });
 });
