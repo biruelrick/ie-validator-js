@@ -1,5 +1,5 @@
 /************************************************
- * RO - IE validator for Roraima state
+ * RO - IE validator for Rondonia state
  ************************************************/
 
 let h = require('../util/helper');
