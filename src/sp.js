@@ -2,7 +2,7 @@
  * AC - IE validator for Acre state
  ************************************************/
 
-let h = require('../util/helper');
+let h = require("../util/helper");
 
 /**
  * @name validate
@@ -13,12 +13,12 @@ let h = require('../util/helper');
  *
  * @param {string} ie string representing the brazilian state registration for companies
  * @param {string|Boolean} pd if user is a 'Produtor Rural'
- * 
+ *
  * @returns {boolean}
  */
-function validate(ie,pd) {
+function validate(ie, pd) {
   if (!ie) return false;
-  if (typeof ie !== 'string') ie = ie.toString();
+  if (typeof ie !== "string") ie = ie.toString();
 
   // example
   // pd = true
@@ -26,24 +26,19 @@ function validate(ie,pd) {
   //
   // pd = false
   // ie = 110042490114
-  
-  if (!ie) return false;
-  ie = ie.split('.').join("");
-  ie = ie.split('/').join("");
-  ie = ie.split('-').join("");
-  if (pd === false){
-    
-    if (ie.length !== 12) return false;
-    return weightCalculator(ie,false);
-  }
-  else{
-   
-    if (ie.length !== 13) return false;
-   
-    return weightCalculator(ie,true);
-  }
 
-  
+  if (!ie) return false;
+  ie = ie.split(".").join("");
+  ie = ie.split("/").join("");
+  ie = ie.split("-").join("");
+  if (pd === false) {
+    if (ie.length !== 12) return false;
+    return weightCalculator(ie, false);
+  } else {
+    if (ie.length !== 13) return false;
+
+    return weightCalculator(ie, true);
+  }
 }
 
 /**
@@ -55,7 +50,7 @@ function validate(ie,pd) {
  * @param {string|Boolean} pd if user is a 'Produtor Rural'
  * @param {string|number} [firstDigit] from base (first weightCalculation)
  */
-function weightCalculator(ie,pd) {
+function weightCalculator(ie, pd) {
   // example
   // pd = true
   // ie = P011004243002
@@ -64,47 +59,50 @@ function weightCalculator(ie,pd) {
   // ie = 11004249 0 114
 
   let base = 0;
-  if (!pd){
-
-    let weights = [1,3,4,5,6,7,8,10];
-    let weights2 = [3,2,10,9,8,7,6,5,4,3,2]
-    let block = (ie.toString().substring(0,8).split(''));
-    let block2 = (ie.toString().substring(0,ie.length-1)).split('');
-    let firstDigit = ie.substring(8,9);
+  if (!pd) {
+    let weights = [1, 3, 4, 5, 6, 7, 8, 10];
+    let weights2 = [3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+    let block = ie
+      .toString()
+      .substring(0, 8)
+      .split("");
+    let block2 = ie
+      .toString()
+      .substring(0, ie.length - 1)
+      .split("");
+    let firstDigit = ie.substring(8, 9);
     let secondDigit = ie.substring(ie.length - 1);
     // first digit test
-    if (block.length !== weights.length){
-      
+    if (block.length !== weights.length) {
       return false;
-    } 
+    }
     base = null;
-    
-    for (let i = 0; i < block.length; i++){
+
+    for (let i = 0; i < block.length; i++) {
       base += weights[i] * block[i];
-    } 
-    let result = (base%11).toString();
-    
+    }
+    let result = (base % 11).toString();
+
     result = result.substring(result.length - 1);
-    
-    if (!(firstDigit == result)){
-      
+
+    if (!(firstDigit == result)) {
       return false;
     }
-    
+
     //second digit test
-    if (block2.length !== weights2.length){
-      return false;
-    } 
-    base = null;
-    for (let i = 0; i < block2.length; i++){
-      base += weights2[i] * block2[i];
-    } 
-    let result2 = (base%11).toString();
-    result2 = result2.substring(result2.length - 1)
-    if (!(secondDigit == result2)){
+    if (block2.length !== weights2.length) {
       return false;
     }
-    return h.mask(ie, '###.###.###.###');
+    base = null;
+    for (let i = 0; i < block2.length; i++) {
+      base += weights2[i] * block2[i];
+    }
+    let result2 = (base % 11).toString();
+    result2 = result2.substring(result2.length - 1);
+    if (!(secondDigit == result2)) {
+      return false;
+    }
+    return h.mask(ie, "###.###.###.###");
   }
   // example
   // pd = true
@@ -112,34 +110,32 @@ function weightCalculator(ie,pd) {
   //
   // pd = false
   // ie = 11004249 0 114
-  else{
-    let weights = [1,3,4,5,6,7,8,10];
-    let block = (ie.toString().substring(1,9).split(''));
-    let digit = ie.substring(9,10);
-    let end = ie.substring(ie.length-3,ie.lenght)
-    
-    if (block.length !== weights.length){
-      
-      return false;
-    } 
-    base = null;
-    
-    for (let i = 0; i < block.length; i++){
-      base += weights[i] * block[i];
-    } 
-    let result = (base%11).toString();
-    
-    result = result.substring(result.length - 1);
-    
-    if (!(digit == result)){
+  else {
+    let weights = [1, 3, 4, 5, 6, 7, 8, 10];
+    let block = ie
+      .toString()
+      .substring(1, 9)
+      .split("");
+    let digit = ie.substring(9, 10);
+    let end = ie.substring(ie.length - 3, ie.lenght);
+
+    if (block.length !== weights.length) {
       return false;
     }
-    return h.mask(ie, '#-########.#/###');
-  }
- 
-  
+    base = null;
 
- 
+    for (let i = 0; i < block.length; i++) {
+      base += weights[i] * block[i];
+    }
+    let result = (base % 11).toString();
+
+    result = result.substring(result.length - 1);
+
+    if (!(digit == result)) {
+      return false;
+    }
+    return h.mask(ie, "#-########.#/###");
+  }
 }
 
 module.exports = validate;

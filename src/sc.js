@@ -2,7 +2,7 @@
  * AC - IE validator for Acre state
  ************************************************/
 
-let h = require('../util/helper');
+let h = require("../util/helper");
 
 /**
  * @name validate
@@ -17,18 +17,14 @@ let h = require('../util/helper');
  */
 function validate(ie) {
   if (!ie) return false;
-  if (typeof ie !== 'string') ie = ie.toString();
+  if (typeof ie !== "string") ie = ie.toString();
 
-  
-  let temp = ie.replace(/\./g,'')
-  
-  temp = temp.replace('-','')
+  let temp = ie.replace(/\./g, "");
 
-
+  temp = temp.replace("-", "");
 
   if (temp.length !== 9) return false;
- 
-    
+
   return weightCalculator(temp);
 }
 
@@ -43,25 +39,27 @@ function validate(ie) {
 function weightCalculator(ie) {
   let weights = [9, 8, 7, 6, 5, 4, 3, 2];
   let base = 0;
-  let block = (ie.toString()).substring(0, ie.length - 1).split('');
-  let digito = ie.substring(ie.length - 1)
-  
-  if (block.length !== weights.length){
+  let block = ie
+    .toString()
+    .substring(0, ie.length - 1)
+    .split("");
+  let digito = ie.substring(ie.length - 1);
+
+  if (block.length !== weights.length) {
     return false;
-  } 
-  for (let i = 0; i < block.length; i++){
+  }
+  for (let i = 0; i < block.length; i++) {
     base += weights[i] * block[i];
-  } 
-  if (digito == 0)
-  {
-    if ((((base % 11))%10 != 1) || (( (base % 11)) != 0)){
+  }
+  if (digito == 0) {
+    if ((base % 11) % 10 != 1 || base % 11 != 0) {
       return false;
     }
   }
-  if(11-(base%11) != digito) return false;
+  if (11 - (base % 11) != digito) return false;
   block.push(digito);
-  let i = block.join().replace(/,/g, '');
-  return h.mask(i, '###.###.###');
+  let i = block.join().replace(/,/g, "");
+  return h.mask(i, "###.###.###");
 }
 
 module.exports = validate;

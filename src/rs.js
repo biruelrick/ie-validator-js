@@ -4,11 +4,7 @@
 
  ************************************************/
 
-
-
-let h = require('../util/helper');
-
-
+let h = require("../util/helper");
 
 /**
 
@@ -33,30 +29,16 @@ let h = require('../util/helper');
  */
 
 function validate(ie) {
-
   if (!ie) return false;
 
-  if (typeof ie !== 'string') ie = ie.toString();
-
-
-
-  
-
-
+  if (typeof ie !== "string") ie = ie.toString();
 
   if (!ie) return false;
 
   if (ie.length !== 11) return false;
 
- 
-
-    
-
   return weightCalculator(ie);
-
 }
-
-
 
 /**
 
@@ -75,48 +57,37 @@ function validate(ie) {
  */
 
 function weightCalculator(ie) {
-
   //224/365879 2
 
-  let weights = [2,9, 8, 7, 6, 5, 4, 3, 2];
+  let weights = [2, 9, 8, 7, 6, 5, 4, 3, 2];
 
   let base = 0;
 
-  let block = (ie.toString().replace('/','')).substring(0,ie.length - 2).split('');
-
-
+  let block = ie
+    .toString()
+    .replace("/", "")
+    .substring(0, ie.length - 2)
+    .split("");
 
   let digito = ie.substring(ie.length - 1);
- 
-  if (block.length !== weights.length){
 
+  if (block.length !== weights.length) {
     return false;
-
-  } 
-
-  for (let i = 0; i < block.length; i++){
-
-    base += weights[i] * block[i];
-
-  } 
-
-  if (11-(base % 11) != digito){
-
-    return false;
-
   }
- 
+
+  for (let i = 0; i < block.length; i++) {
+    base += weights[i] * block[i];
+  }
+
+  if (11 - (base % 11) != digito) {
+    return false;
+  }
 
   block.push(digito);
 
+  let i = block.join().replace(/,/g, "");
 
-
-  let i = block.join().replace(/,/g, '');
-
-  return h.mask(i, '###/#######');
-
+  return h.mask(i, "###/#######");
 }
-
-
 
 module.exports = validate;
