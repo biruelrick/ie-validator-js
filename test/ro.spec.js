@@ -1,5 +1,5 @@
 /*******************************************************************************
- * RO - IE validator specification test file for Roraima state
+ * RO - IE validator specification test file for Rondonia state
  * *****************************************************************************
  * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_RO.html
  * example: '5833583880755-9'
