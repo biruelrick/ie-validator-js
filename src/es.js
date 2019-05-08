@@ -25,7 +25,7 @@ function validate(ie) {
   if (ie.length !== 10) return false;
  
     
-  return weightCalculator(ie);
+  return weightCalculator(h.returnOnlyNumbers(ie));
 }
 
 /**
@@ -47,11 +47,18 @@ function weightCalculator(ie) {
   } 
   for (let i = 0; i < block.length; i++){
     base += weights[i] * block[i];
-  } 
-  if ((base % 11) !== 6){
-    return false;
   }
-
+  if (digito == 0){
+    if(!((base%11) == 1 || (base%11) == 0)){
+      return false;
+    }
+  } 
+  else{
+    if (digito != (11-(base%11))){
+      return false;
+    }
+  }
+  
   block.push(digito);
 
   let i = block.join().replace(/,/g, '');
