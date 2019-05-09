@@ -2,7 +2,7 @@
  * AC - IE validator for Acre state
  ************************************************/
 
-let h = require("../util/helper");
+let h = require('../util/helper');
 
 /**
  * @name validate
@@ -16,16 +16,16 @@ let h = require("../util/helper");
  * @returns {boolean}
  */
 function validate(ie) {
-  if (!ie) return false;
-  if (typeof ie !== "string") ie = ie.toString();
+    if (!ie) return false;
+    if (typeof ie !== 'string') ie = ie.toString();
 
-  ie = h.returnOnlyNumbers(ie);
+    ie = h.returnOnlyNumbers(ie);
 
-  if (!ie) return false;
-  if (ie.length !== 13) return false;
-  if (ie.slice(0, 2) !== "01") return false;
+    if (!ie) return false;
+    if (ie.length !== 13) return false;
+    if (ie.slice(0, 2) !== '01') return false;
 
-  return weightCalculator(ie);
+    return weightCalculator(ie);
 }
 
 /**
@@ -37,36 +37,31 @@ function validate(ie) {
  * @param {string|number} [firstDigit] from base (first weightCalculation)
  */
 function weightCalculator(ie, firstDigit) {
-  let weights = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-  let base = 0;
-  let block = ie.substring(0, ie.length - 2).split("");
+    let weights = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    let base = 0;
+    let block = ie.substring(0, ie.length - 2).split('');
 
-  if (typeof firstDigit === "undefined") {
-    weights.shift();
-  } else {
-    block.push(firstDigit);
-  }
+    if (typeof firstDigit === 'undefined') {
+        weights.shift();
 
-  if (block.length !== weights.length) return false;
-  for (let i = 0; i < block.length; i++) base += weights[i] * block[i];
+    } else {
+        block.push(firstDigit);
+    }
 
-  let a = base / 11;
-  let b = Math.floor(a);
-  let c = a - b;
-  let d = c.toFixed(2);
-  let e = d.toString().slice(-2);
-  let f = e / 10;
-  let g = Math.ceil(f)
-    .toString()
-    .charAt(0);
+    if (block.length !== weights.length) return false;
+    for (let i = 0; i < block.length; i++) base += weights[i] * block[i];
 
-  if (!firstDigit) return weightCalculator(ie, g);
+    let resto = base % 11;
+    let dig = 11 - resto;
 
-  block.push((11 - g).toString());
+    if (dig == 10 || dig == 11) dig = 0;
+    if (typeof firstDigit === 'undefined') return weightCalculator(ie, dig);
 
-  let i = block.join().replace(/,/g, "");
+    block.push((dig).toString());
 
-  return h.mask(i, "##.###.###/###-##");
+    let i = block.join().replace(/,/g, '');
+
+    return h.mask(i, '##.###.###/###-##');
 }
 
 module.exports = validate;
