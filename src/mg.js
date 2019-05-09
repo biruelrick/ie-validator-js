@@ -20,9 +20,11 @@ function validate(ie) {
   if (typeof ie !== "string") ie = ie.toString();
 
   if (!ie) return false;
-  if (ie.length !== 10) return false;
+  let temp = h.returnOnlyNumbers(ie);
 
-  return weightCalculator(ie);
+  if (temp.length !== 13) return false;
+
+  return weightCalculator(temp);
 }
 
 /**
@@ -34,31 +36,54 @@ function validate(ie) {
  * @param {string|number} [firstDigit] from base (first weightCalculation)
  */
 function weightCalculator(ie) {
-  let weights = [9, 8, 7, 6, 5, 4, 3, 2];
-  let base = 0;
+  let weights = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2];
+  let weights2 = [3, 2, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+  let base = "";
+  let base2 = 0;
+  let soma = 0;
   let block = ie
     .toString()
-    .split("-")[0]
+    .substring(0, ie.length - 2)
     .split("");
-  let digito = ie.split("-")[1];
+  block.splice(3, 0, "0");
+
+  let digito1 = ie.substring(ie.length - 2, ie.length - 1);
+  let digito2 = ie.substring(ie.length - 1);
 
   if (block.length !== weights.length) {
     return false;
   }
+
   for (let i = 0; i < block.length; i++) {
-    base += weights[i] * block[i];
+    base += (weights[i] * block[i]).toString();
+  }
+  for (let char of base) {
+    soma += parseInt(char);
   }
 
-  let resultado = 11 - (base % 11);
+  if (Math.ceil(soma / 10) * 10 - soma != digito1) return false;
 
-  if (resultado != digito) {
-    if (!((resultado == 11 || resultado == 10) && digito == 0)) return false;
+  block.splice(3, 1);
+
+  block.push(digito1);
+
+  for (let i = 0; i < block.length; i++) {
+    base2 += weights2[i] * block[i];
+  }
+  if (digito2 == 0) {
+    if (base2 % 11 == 0 || base2 % 11 == 1) {
+      block.push(digito2);
+      let i = block.join().replace(/,/g, "");
+      return h.mask(i, "###.###.###/####");
+    } else {
+      return false;
+    }
   }
 
-  block.push(digito);
+  if (11 - (base2 % 11) != digito2) return false;
 
   let i = block.join().replace(/,/g, "");
-  return h.mask(i, "########-#");
+  return h.mask(i, "###.###.###/####");
 }
 
 module.exports = validate;

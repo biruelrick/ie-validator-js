@@ -19,10 +19,13 @@ function validate(ie) {
   if (!ie) return false;
   if (typeof ie !== "string") ie = ie.toString();
 
-  if (!ie) return false;
-  if (ie.length !== 10) return false;
+  let temp = ie.replace(/\./g, "");
 
-  return weightCalculator(ie);
+  temp = temp.replace("-", "");
+
+  if (temp.length !== 9) return false;
+
+  return weightCalculator(temp);
 }
 
 /**
@@ -38,9 +41,9 @@ function weightCalculator(ie) {
   let base = 0;
   let block = ie
     .toString()
-    .split("-")[0]
+    .substring(0, ie.length - 1)
     .split("");
-  let digito = ie.split("-")[1];
+  let digito = ie.substring(ie.length - 1);
 
   if (block.length !== weights.length) {
     return false;
@@ -48,17 +51,21 @@ function weightCalculator(ie) {
   for (let i = 0; i < block.length; i++) {
     base += weights[i] * block[i];
   }
-
-  let resultado = 11 - (base % 11);
-
-  if (resultado != digito) {
-    if (!((resultado == 11 || resultado == 10) && digito == 0)) return false;
+  if (digito == 0) {
+    if (
+      11 - (base % 11) == 11 ||
+      base % 11 == 10 ||
+      11 - (base % 11) == digito
+    ) {
+      block.push(digito);
+      let i = block.join().replace(/,/g, "");
+      return h.mask(i, "#########");
+    }
   }
-
+  if (11 - (base % 11) != digito) return false;
   block.push(digito);
-
   let i = block.join().replace(/,/g, "");
-  return h.mask(i, "########-#");
+  return h.mask(i, "#########");
 }
 
 module.exports = validate;

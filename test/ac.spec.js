@@ -13,11 +13,11 @@ let ac = require('../src/ac');
  * pass if the function './src/ac.js' is correct as technical specification.
  * It will fail if the functions is wrong or the ie number is incompatible with state
  */
-let ie = '01.500.496/141-02';
+let ie = '01.744.290/710-35';
 
 describe(`Checking the I.E. number '${ie}'...`, () => {
-    it('ac', () => {
-        assert.equal(ac(ie), ie,
-            `Sorry... the I.E. number '${ie}' for the 'AC' state is not valid! :(`);
-    });
+  it('ac', () => {
+    assert.equal(ac(ie), ie,
+        `Sorry... the I.E. number '${ie}' for the 'AC' state is not valid! :(`);
+  });
 });
