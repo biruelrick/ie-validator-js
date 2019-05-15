@@ -1,5 +1,5 @@
 /************************************************
- * AL - IE validator for Acre state
+ * AL - IE validator for Alagoas state
  ************************************************/
 
 let h = require("../util/helper");
