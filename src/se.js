@@ -1,4 +1,19 @@
+
+/************************************************
+ * SE - IE validator for Sergipe state
+ ************************************************/
+
 let h = require('../util/helper');
+
+/**
+ * @name validate
+ * @description
+ * Check if the ie (inscrição estadual) representing by state is a valid number
+ * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_SE.html
+ * @param {string} ie string representing the brazilian state registration for companies
+ * Example : "73750251-7"
+ * @returns {boolean}
+ */
 
 function validate(ie) {
     if (!ie) return false;
