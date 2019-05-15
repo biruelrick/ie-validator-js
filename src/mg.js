@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Acre state
+ * AC - IE validator for Minas Gerais state
  ************************************************/
 
 let h = require("../util/helper");
@@ -8,8 +8,8 @@ let h = require("../util/helper");
  * @name validate
  * @description
  * Check if the ie (inscrição estadual) representing by state is a valid number
- * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_AC.html
- * example: '01.004.823/001-12'
+ * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_MG.html
+ * example: '398.761.507/7554'
  *
  * @param {string} ie string representing the brazilian state registration for companies
  *
