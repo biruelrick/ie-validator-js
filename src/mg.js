@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Minas Gerais state
+ * MG - IE validator for Minas Gerais state
  ************************************************/
 
 let h = require("../util/helper");
