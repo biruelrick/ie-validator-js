@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Ceará state
+ * CE - IE validator for Ceará state
  ************************************************/
 
 let h = require("../util/helper");
