@@ -1,4 +1,3 @@
-
 /************************************************
  * SE - IE validator for Sergipe state
  ************************************************/
@@ -24,6 +23,14 @@ function validate(ie) {
     return weightCalculator(ie);
 }
 
+/**
+ * @name weightCalculator
+ * @description
+ * Calculate the weight according the technical specification
+ *
+ * @param {string|Array} ie number registration
+ * @param {string|number} [firstDigit] from base (first weightCalculation)
+ */
 function weightCalculator(ie) {
     let weights = [9, 8, 7, 6, 5, 4, 3, 2];
     let base = 0;
