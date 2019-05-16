@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Rio de Janeiro state
+ * RJ - IE validator for Rio de Janeiro state
  ************************************************/
 
 let h = require("../util/helper");
