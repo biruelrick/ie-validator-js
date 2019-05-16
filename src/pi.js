@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Piauí state
+ * PI - IE validator for Piauí state
  ************************************************/
 
 let h = require("../util/helper");
