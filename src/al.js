@@ -1,5 +1,5 @@
 /************************************************
- * AL - IE validator for Acre state
+ * AL - IE validator for Alagoas state
  ************************************************/
 
 let h = require("../util/helper");
@@ -9,7 +9,7 @@ let h = require("../util/helper");
  * @description
  * Check if the ie (inscrição estadual) representing by state is a valid number
  * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_AL.html
- * example: '01.004.823/001-12'
+ * example: '248736108'
  *
  * @param {string} ie string representing the brazilian state registration for companies
  *

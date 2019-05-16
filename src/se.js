@@ -1,4 +1,18 @@
+/************************************************
+ * SE - IE validator for Sergipe state
+ ************************************************/
+
 let h = require('../util/helper');
+
+/**
+ * @name validate
+ * @description
+ * Check if the ie (inscrição estadual) representing by state is a valid number
+ * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_SE.html
+ * @param {string} ie string representing the brazilian state registration for companies
+ * Example : "73750251-7"
+ * @returns {boolean}
+ */
 
 function validate(ie) {
     if (!ie) return false;
@@ -9,6 +23,14 @@ function validate(ie) {
     return weightCalculator(ie);
 }
 
+/**
+ * @name weightCalculator
+ * @description
+ * Calculate the weight according the technical specification
+ *
+ * @param {string|Array} ie number registration
+ * @param {string|number} [firstDigit] from base (first weightCalculation)
+ */
 function weightCalculator(ie) {
     let weights = [9, 8, 7, 6, 5, 4, 3, 2];
     let base = 0;

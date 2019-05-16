@@ -1,7 +1,5 @@
 /************************************************
-
- * AC - IE validator for Acre state
-
+ * RS - IE validator for Rio Grande do Sul state
  ************************************************/
 
 let h = require("../util/helper");
@@ -13,19 +11,12 @@ let h = require("../util/helper");
  * @description
 
  * Check if the ie (inscrição estadual) representing by state is a valid number
-
- * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_AC.html
-
- * example: '224/3658792'
-
+ * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_RS.html
+ * example: '321/1975260'
  *
-
  * @param {string} ie string representing the brazilian state registration for companies
-
  *
-
  * @returns {boolean}
-
  */
 
 function validate(ie) {
