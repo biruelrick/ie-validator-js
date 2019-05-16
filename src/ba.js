@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Acre state
+ * BA - IE validator for Bahia state
  ************************************************/
 
 let h = require("../util/helper");
@@ -8,8 +8,8 @@ let h = require("../util/helper");
  * @name validate
  * @description
  * Check if the ie (inscrição estadual) representing by state is a valid number
- * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_AC.html
- * example: '01.004.823/001-12'
+ * technical specification: http://www.sintegra.gov.br/Cad_Estados/cad_BA.html
+ * example: '290819-29'
  *
  * @param {string} ie string representing the brazilian state registration for companies
  *
