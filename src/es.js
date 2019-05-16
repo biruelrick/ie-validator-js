@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Espírito Santo state
+ * ES - IE validator for Espírito Santo state
  ************************************************/
 
 let h = require("../util/helper");
