@@ -1,5 +1,5 @@
 /************************************************
- * AC - IE validator for Paraíba state
+ * PB - IE validator for Paraíba state
  ************************************************/
 
 let h = require("../util/helper");
